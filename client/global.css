@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -37,11 +37,12 @@
   }
 
   * { @apply border-border; }
-  body { @apply bg-background text-foreground antialiased; font-family: "DM Sans", sans-serif; }
+  body { @apply bg-background text-foreground antialiased; font-family: "IBM Plex Sans", "DM Sans", sans-serif; }
   button, input { font: inherit; }
   button { -webkit-tap-highlight-color: transparent; }
 }
 
 @layer utilities {
   .font-display { font-family: "Instrument Serif", Georgia, serif; }
+  .font-brand { font-family: "DM Sans", "IBM Plex Sans", sans-serif; }
 }

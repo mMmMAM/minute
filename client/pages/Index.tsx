@@ -1,61 +1,74 @@
-import { ArrowUpRight, Bell, CalendarDays, ChevronRight, Clock3, Dumbbell, FolderPlus, MoreHorizontal, Play, Plus, Search, TimerReset, UsersRound } from "lucide-react";
-import { Link } from "react-router-dom";
-
-const workouts = [
-  { title: "Full Body Foundations", label: "Strength · 45 min", people: "12 clients", color: "bg-[#d9efc3]", icon: Dumbbell },
-  { title: "Morning Mobility", label: "Mobility · 18 min", people: "8 clients", color: "bg-[#f6d4bc]", icon: TimerReset },
-  { title: "Run Strong", label: "Conditioning · 32 min", people: "6 clients", color: "bg-[#d8dbfa]", icon: Play },
-];
+import { Eye, EyeOff, Github, HelpCircle, LockKeyhole, Mail, Chrome } from "lucide-react";
+import { FormEvent, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Index() {
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    navigate("/workouts/new");
+  };
+
   return (
-    <div className="min-h-screen bg-[#f7f7f5] text-[#142117]">
-      <header className="sticky top-0 z-20 border-b border-[#e6e7e2] bg-[#f7f7f5]/90 px-5 backdrop-blur-lg md:px-9">
-        <div className="mx-auto flex h-[76px] max-w-[1440px] items-center justify-between">
-          <Link to="/" className="flex items-center gap-2.5 font-extrabold tracking-[-0.06em]">
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-[#baff4b] text-lg tracking-[-0.15em]">p.</span>
-            <span className="text-[22px]">pace</span>
-          </Link>
-          <nav className="hidden items-center gap-8 text-sm font-semibold text-[#6a746c] md:flex">
-            <Link to="/" className="text-[#142117]">Overview</Link>
-            <Link to="/workouts" className="transition hover:text-[#142117]">Workouts</Link>
-            <Link to="/clients" className="transition hover:text-[#142117]">Clients</Link>
-            <Link to="/library" className="transition hover:text-[#142117]">Library</Link>
-          </nav>
-          <div className="flex items-center gap-3">
-            <button aria-label="Search" className="hidden h-10 w-10 place-items-center rounded-full border border-[#e3e5df] bg-white text-[#526057] sm:grid"><Search size={18} /></button>
-            <button aria-label="Notifications" className="grid h-10 w-10 place-items-center rounded-full border border-[#e3e5df] bg-white text-[#526057]"><Bell size={18} /></button>
-            <button className="flex items-center gap-2 rounded-full bg-[#142117] py-2 pl-2 pr-3 text-sm font-bold text-white"><span className="grid h-6 w-6 place-items-center rounded-full bg-[#f4a96f] text-xs text-[#142117]">MJ</span><span className="hidden sm:inline">Margot</span></button>
-          </div>
-        </div>
-      </header>
+    <main className="min-h-screen bg-[#f7f7f7] text-[#202124]">
+      <div className="grid min-h-screen md:grid-cols-2">
+        <section className="flex min-h-screen flex-col bg-[#fafafa] px-6 py-3 sm:px-10 md:px-12 lg:px-16">
+          <header className="flex h-10 items-center">
+            <Link to="/" aria-label="Pace home" className="font-brand text-[25px] font-semibold tracking-[-0.07em] text-[#222326]">
+              pace<span className="text-[#ec4e02]">.</span>
+            </Link>
+          </header>
 
-      <main className="mx-auto max-w-[1440px] px-5 pb-12 pt-9 md:px-9 md:pt-12">
-        <section className="mb-10 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
-          <div>
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#8a968c]">Tuesday, 24 June</p>
-            <h1 className="font-display max-w-2xl text-4xl font-semibold tracking-[-0.055em] text-[#142117] sm:text-5xl">Good morning, Margot.</h1>
-            <p className="mt-3 text-base text-[#68736b]">Create better training experiences, one workout at a time.</p>
-          </div>
-          <Link to="/workouts/new" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#142117] px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#25372a]"><Plus size={18} /> Create workout</Link>
-        </section>
+          <div className="flex w-full flex-1 flex-col justify-center py-16">
+            <div className="mx-auto w-full max-w-[470px]">
+              <div className="mb-8 text-center">
+                <h1 className="font-brand text-[25px] font-medium leading-[1.34] tracking-[-0.025em] text-[#202124]">Log in to access your workouts</h1>
+                <p className="mt-3 text-[14px] leading-5 text-[#6d7075]">Build, share, and train smarter with Pace.</p>
+              </div>
 
-        <section className="grid gap-4 md:grid-cols-3">
-          <div className="rounded-[22px] bg-[#142117] p-6 text-white"><div className="flex items-center justify-between text-[#c5ffc0]"><span className="text-sm font-semibold">This week</span><ArrowUpRight size={18} /></div><p className="mt-8 font-display text-5xl tracking-[-0.06em]">16<span className="ml-2 text-lg font-medium text-[#aeb9af]">sessions</span></p><p className="mt-4 text-sm text-[#aeb9af]">Up 18% from last week</p></div>
-          <div className="rounded-[22px] border border-[#e2e5dd] bg-white p-6"><div className="flex items-center justify-between"><span className="text-sm font-bold text-[#68736b]">Active clients</span><span className="grid h-9 w-9 place-items-center rounded-full bg-[#f2f5ed] text-[#52723b]"><UsersRound size={18} /></span></div><p className="mt-8 font-display text-5xl tracking-[-0.06em]">24</p><p className="mt-4 text-sm text-[#778078]">4 new this month</p></div>
-          <div className="rounded-[22px] border border-[#e2e5dd] bg-white p-6"><div className="flex items-center justify-between"><span className="text-sm font-bold text-[#68736b]">Workout library</span><span className="grid h-9 w-9 place-items-center rounded-full bg-[#fff1e8] text-[#bd6840]"><FolderPlus size={18} /></span></div><p className="mt-8 font-display text-5xl tracking-[-0.06em]">38</p><p className="mt-4 text-sm text-[#778078]">Across 6 collections</p></div>
-        </section>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <label className="block text-left">
+                  <span className="mb-2 block text-xs font-medium text-[#4e5156]">Email or username</span>
+                  <span className="relative block">
+                    <Mail size={16} className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8c9095]" />
+                    <input value={email} onChange={(event) => setEmail(event.target.value)} type="email" placeholder="you@example.com" className="h-11 w-full rounded-lg border border-[#dfe1e3] bg-white pl-10 pr-4 text-sm outline-none transition placeholder:text-[#9b9ea3] focus:border-[#ec4e02] focus:ring-2 focus:ring-[#ec4e02]/15" />
+                  </span>
+                </label>
+                <label className="block text-left">
+                  <span className="mb-2 block text-xs font-medium text-[#4e5156]">Password</span>
+                  <span className="relative block">
+                    <LockKeyhole size={16} className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8c9095]" />
+                    <input value={password} onChange={(event) => setPassword(event.target.value)} type={showPassword ? "text" : "password"} placeholder="Enter your password" className="h-11 w-full rounded-lg border border-[#dfe1e3] bg-white pl-10 pr-11 text-sm outline-none transition placeholder:text-[#9b9ea3] focus:border-[#ec4e02] focus:ring-2 focus:ring-[#ec4e02]/15" />
+                    <button type="button" aria-label={showPassword ? "Hide password" : "Show password"} onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 rounded p-1 text-[#777b80] hover:text-[#222326]">{showPassword ? <EyeOff size={17} /> : <Eye size={17} />}</button>
+                  </span>
+                </label>
+                <button type="submit" className="h-10 w-full rounded-lg bg-[#ec4e02] text-sm font-medium text-white shadow-sm transition hover:bg-[#d94600] focus:outline-none focus:ring-2 focus:ring-[#ec4e02]/30 focus:ring-offset-2">Log in</button>
+              </form>
 
-        <section className="mt-11 grid gap-8 xl:grid-cols-[1fr_360px]">
-          <div>
-            <div className="mb-5 flex items-center justify-between"><div><h2 className="font-display text-2xl font-semibold tracking-[-0.04em]">Your workout shelf</h2><p className="mt-1 text-sm text-[#758077]">Pick up where you left off.</p></div><Link to="/workouts" className="flex items-center gap-1 text-sm font-bold text-[#476c2e]">View all <ChevronRight size={17} /></Link></div>
-            <div className="grid gap-4 md:grid-cols-3">
-              {workouts.map(({ title, label, people, color, icon: Icon }) => <Link key={title} to="/workouts/new" className="group rounded-[22px] border border-[#e2e5dd] bg-white p-3 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-[#142117]/5"><div className={`relative flex h-36 items-center justify-center overflow-hidden rounded-[15px] ${color}`}><span className="grid h-16 w-16 rotate-[-8deg] place-items-center rounded-2xl border border-white/70 bg-white/50 text-[#243729] shadow-sm"><Icon size={30} strokeWidth={1.7} /></span><button aria-label={`More options for ${title}`} className="absolute right-3 top-3 grid h-7 w-7 place-items-center rounded-full bg-white/80"><MoreHorizontal size={16} /></button></div><div className="px-1 pb-1 pt-4"><h3 className="font-display text-lg font-semibold tracking-[-0.03em]">{title}</h3><p className="mt-1 text-xs text-[#79837b]">{label}</p><div className="mt-4 flex items-center justify-between border-t border-[#edf0eb] pt-3 text-xs font-semibold text-[#68736b]"><span>{people}</span><span className="grid h-7 w-7 place-items-center rounded-full bg-[#142117] text-white"><Play size={12} fill="currentColor" /></span></div></div></Link>)}
+              <button type="button" className="mt-5 w-full text-center text-sm font-medium text-[#575a60] transition hover:text-[#ec4e02]">Forgot password?</button>
+
+              <div className="my-7 flex items-center gap-3 text-xs text-[#96999e]"><span className="h-px flex-1 bg-[#e1e2e4]"/><span>or continue with</span><span className="h-px flex-1 bg-[#e1e2e4]"/></div>
+              <div className="grid grid-cols-2 gap-3">
+                <button type="button" className="flex h-10 items-center justify-center gap-2 rounded-lg border border-[#dedfe1] bg-white text-sm font-medium text-[#45484d] transition hover:bg-[#f2f2f2]"><Chrome size={17}/> Google</button>
+                <button type="button" className="flex h-10 items-center justify-center gap-2 rounded-lg border border-[#dedfe1] bg-white text-sm font-medium text-[#45484d] transition hover:bg-[#f2f2f2]"><Github size={17}/> GitHub</button>
+              </div>
             </div>
           </div>
-          <aside className="rounded-[24px] border border-[#e2e5dd] bg-white p-6"><div className="flex items-center justify-between"><div><p className="text-xs font-bold uppercase tracking-[0.13em] text-[#8a968c]">Today</p><h2 className="mt-1 font-display text-2xl font-semibold tracking-[-0.04em]">Your schedule</h2></div><CalendarDays size={21} className="text-[#547f38]" /></div><div className="mt-6 space-y-5 border-l border-[#dfe5db] pl-5"><div className="relative"><span className="absolute -left-[25px] top-1.5 h-2 w-2 rounded-full bg-[#baff4b] ring-4 ring-[#edf4e8]"/><p className="text-xs font-semibold text-[#89938b]">9:00 AM</p><p className="mt-1 font-bold">Lena — Full Body</p><p className="mt-1 text-sm text-[#738077]">Remote session · 45 min</p></div><div className="relative"><span className="absolute -left-[25px] top-1.5 h-2 w-2 rounded-full bg-[#f3ae7a] ring-4 ring-[#fdf1e8]"/><p className="text-xs font-semibold text-[#89938b]">12:30 PM</p><p className="mt-1 font-bold">Team Atlas — Run Strong</p><p className="mt-1 text-sm text-[#738077]">Shared workout · 32 min</p></div><div className="relative"><span className="absolute -left-[25px] top-1.5 h-2 w-2 rounded-full bg-[#d9dfe9] ring-4 ring-[#f1f3f6]"/><p className="text-xs font-semibold text-[#89938b]">4:15 PM</p><p className="mt-1 font-bold">Dani — Mobility</p><p className="mt-1 text-sm text-[#738077]">In person · 18 min</p></div></div><button className="mt-7 w-full rounded-xl border border-[#dfe4dc] py-3 text-sm font-bold text-[#3c4c40] transition hover:bg-[#f4f6f2]">Open calendar</button></aside>
+
+          <footer className="mx-auto w-full max-w-[470px] border-t border-[#e1e2e4] py-5 text-center text-xs leading-4 text-[#7e8186] sm:flex sm:items-center sm:justify-between sm:text-left"><span>New to Pace? <button className="font-medium text-[#bb3e02] hover:text-[#ec4e02]">Sign up</button></span><a href="mailto:support@pace.fit" className="mt-2 inline-flex items-center justify-center gap-1.5 hover:text-[#ec4e02] sm:mt-0"><HelpCircle size={14}/> Get help</a></footer>
         </section>
-      </main>
-    </div>
+
+        <aside className="relative hidden min-h-screen overflow-hidden bg-[#0f1017] md:block">
+          <img src="https://replit.com/cdn-cgi/image/width=3840,quality=80,format=auto/public/images/auth/LoginImage.jpg" alt="A creative training environment" className="absolute inset-0 h-full w-full object-cover opacity-90" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0f1017]/15 via-transparent to-[#0f1017]/70" />
+          <div className="absolute inset-0 flex items-center justify-center p-12 lg:p-20"><div className="max-w-[520px] text-center text-white"><p className="font-brand text-4xl font-light leading-[1.05] tracking-[-0.045em] lg:text-5xl">Movement is a practice.<br/><span className="text-[#ff7540]">Make it yours.</span></p><p className="mx-auto mt-6 max-w-sm text-sm leading-6 text-white/75">A calmer way to create meaningful workouts and keep your people moving forward.</p></div></div>
+          <div className="absolute bottom-8 left-10 right-10 flex items-center justify-between text-xs text-white/60"><span>pace / workout studio</span><span>01 — 04</span></div>
+        </aside>
+      </div>
+    </main>
   );
 }
