@@ -5,9 +5,10 @@ import { createRoot } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+import Placeholder from "./pages/Placeholder";
+import WorkoutBuilder from "./pages/WorkoutBuilder";
 
 const queryClient = new QueryClient();
 
@@ -19,8 +20,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
+          <Route path="/workouts/new" element={<WorkoutBuilder />} />
+          <Route path="/:section" element={<Placeholder />} />
+          <Route path="*" element={<Placeholder />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
