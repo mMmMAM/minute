@@ -6,13 +6,13 @@
 
 @layer base {
   :root {
-    --background: 60 12% 96%;
+    --background: 60 17% 97%;
     --foreground: 132 23% 11%;
     --card: 0 0% 100%;
     --card-foreground: 132 23% 11%;
     --popover: 0 0% 100%;
     --popover-foreground: 132 23% 11%;
-    --primary: 132 23% 11%;
+    --primary: 145 34% 27%;
     --primary-foreground: 0 0% 100%;
     --secondary: 92 31% 93%;
     --secondary-foreground: 132 23% 11%;
@@ -44,5 +44,5 @@
 
 @layer utilities {
   .font-display { font-family: "Instrument Serif", Georgia, serif; }
-  .font-brand { font-family: "DM Sans", "IBM Plex Sans", sans-serif; }
+  .font-brand { font-family: "Offlander", "Instrument Serif", Georgia, serif; }
 }

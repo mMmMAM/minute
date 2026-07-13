@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Index from "./pages/Index";
 import Placeholder from "./pages/Placeholder";
+import Program from "./pages/Program";
 import WorkoutBuilder from "./pages/WorkoutBuilder";
 
 const queryClient = new QueryClient();
@@ -20,6 +21,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/program" element={<Program />} />
           <Route path="/workouts/new" element={<WorkoutBuilder />} />
           <Route path="/:section" element={<Placeholder />} />
           <Route path="*" element={<Placeholder />} />
