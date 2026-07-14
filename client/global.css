@@ -37,7 +37,7 @@
   }
 
   * { @apply border-border; }
-  body { @apply bg-background text-foreground antialiased; font-family: "IBM Plex Sans", "DM Sans", sans-serif; }
+  body { @apply bg-background text-foreground antialiased; font-family: "DM Sans", Arial, sans-serif; letter-spacing: 0.01em; }
   button, input { font: inherit; }
   button { -webkit-tap-highlight-color: transparent; }
 }
