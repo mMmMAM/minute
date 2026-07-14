@@ -1,4 +1,4 @@
-export type LibraryExercise = { id: number; name: string; focus: string; equipment: string; detail: string };
+export type LibraryExercise = { id: number; name: string; focus: string; equipment: string; detail: string; media?: string };
 
 export const starterExercises: LibraryExercise[] = [
   { id: 1, name: "World's Greatest Stretch", focus: "Mobility", equipment: "Bodyweight", detail: "Alternating sides" },
