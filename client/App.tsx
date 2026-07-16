@@ -13,6 +13,7 @@ import WorkoutBuilder from "./pages/WorkoutBuilder";
 import Workouts from "./pages/Workouts";
 import ExerciseLibrary from "./pages/ExerciseLibrary";
 import WorkoutPlayer from "./pages/WorkoutPlayer";
+import WorkoutDetails from "./pages/WorkoutDetails";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/workouts" element={<Workouts />} />
           <Route path="/workouts/new" element={<WorkoutBuilder />} />
           <Route path="/workouts/start" element={<WorkoutPlayer />} />
+          <Route path="/workouts/details" element={<WorkoutDetails />} />
           <Route path="/exercise-library" element={<ExerciseLibrary />} />
           <Route path="/:section" element={<Placeholder />} />
           <Route path="*" element={<Placeholder />} />
